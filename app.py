@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, request,redirect
+import numpy as np
 import pickle
 import pandas as pd
 import sklearn
@@ -375,7 +376,7 @@ def test():
         price = price[0][0]
         
         # rounding up the price
-        price = round(price[0], 2)
+        np.round(price,2)
 
         # approx std dev of the predicted value
         price_1 = price - 900
