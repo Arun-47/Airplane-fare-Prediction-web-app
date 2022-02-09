@@ -372,7 +372,8 @@ def test():
         mod = model.predict(fs_m)
         mod = [mod]
         price = fs_model.inverse_transform(mod)
-
+        price = price[0][0]
+        
         # rounding up the price
         price = round(price[0], 2)
 
