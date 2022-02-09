@@ -349,7 +349,7 @@ def test():
         # approx std dev of the predicted value
         price_1 = price - 900
         price_2 = price + 900
-        output = '₹' + str(price_1) + ' - ' + str(price_2)
+        output = '₹' +  str(np.round(price_1,2)) + ' - ' + str(np.round(price_2,2))
         return render_template('Home.html', value=output)
 
 if __name__ == '__main__':
