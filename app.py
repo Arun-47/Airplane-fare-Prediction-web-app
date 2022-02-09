@@ -306,8 +306,7 @@ def test():
         #    dur_hour,
         #    dur_min,)
         
-        
-        attri_df = pd.DataFrame([[
+        attri = [[
             Total_stops,
             Air_India,
             GoAir,
@@ -337,7 +336,8 @@ def test():
             Arrival_min,
             dur_hour,
             dur_min,
-        ]], columns =['Total_stops',
+        ]]
+        attri_df = pd.DataFrame(attri, columns =['Total_stops',
             'Air_India',
             'GoAir',
             'IndiGo',
