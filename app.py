@@ -307,7 +307,8 @@ def test():
         #    dur_hour,
         #    dur_min,)
         
-        attri = [[
+       # Predicting fare using the imported SVR model
+        fs_m = X_fs_model.transform([[
             Total_stops,
             Air_India,
             GoAir,
@@ -337,46 +338,13 @@ def test():
             Arrival_min,
             dur_hour,
             dur_min,
-        ]]
-        attri_df = pd.DataFrame(attri, columns =['Total_stops',
-            'Air_India',
-            'GoAir',
-            'IndiGo',
-            'Jet_Airways',
-            'Jet_Airways_Business',
-            'Multiple_carriers',
-            'Multiple_carriers_Premium_economy',
-            'SpiceJet',
-            'Trujet',
-            'Vistara',
-            'Vistara_Premium_economy',
-            's_Chennai',
-            's_Delhi',
-            's_Kolkata',
-            's_Mumbai',
-            'd_Cochin',
-            'd_Delhi',
-            'd_Hyderabad',
-            'd_Kolkata',
-            'd_New_Delhi',
-            'Journey_day',
-            'Journey_month',
-            'Dep_hour',
-            'Dep_min',
-            'Arrival_hour',
-            'Arrival_min',
-            'dur_hour',
-            'dur_min'])
-        
-       # Predicting fare using the imported SVR model
-        fs_m = X_fs_model.transform(attri_df)
-        mod = model.predict(fs_m)
-        mod = [mod]
+        ]])
+        mod = [model.predict(fs_m)]
         price = fs_model.inverse_transform(mod)
         price = price[0][0]
         
         # rounding up the price
-        np.round(price,2)
+        price = np.round(price,2)
 
         # approx std dev of the predicted value
         price_1 = price - 900
