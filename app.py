@@ -369,7 +369,9 @@ def test():
         
        # Predicting fare using the imported SVR model
         fs_m = X_fs_model.transform(attri_df)
-        price = fs_model.inverse_transform(model.predict(fs_m))
+        mod = model.predict(fs_m)
+        mod = [mod]
+        price = fs_model.inverse_transform(mod)
 
         # rounding up the price
         price = round(price[0], 2)
